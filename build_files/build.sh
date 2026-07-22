@@ -22,6 +22,15 @@ dnf5 install -y tmux
 # Disable COPRs so they don't end up enabled on the final image:
 # dnf5 -y copr disable ublue-os/staging
 
+dnf5 install -y brave-browser
+
+## Throne (VPN-клиент) + SUID для TUN
+
+curl -fsSL -o /etc/yum.repos.d/throne.repo https://parhelia512.github.io/throne.repo
+dnf5 install -y throne
+chown root:root /usr/lib64/Throne/ThroneCore
+chmod u+s /usr/lib64/Throne/ThroneCore
+
 #### Example for enabling a System Unit File
 
 systemctl enable podman.socket
