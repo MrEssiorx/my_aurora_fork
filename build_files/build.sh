@@ -22,7 +22,9 @@ dnf5 install -y tmux
 # Disable COPRs so they don't end up enabled on the final image:
 # dnf5 -y copr disable ublue-os/staging
 
-dnf5 install -y brave-browser
+dnf5 install dnf-plugins-core
+dnf5 config-manager addrepo --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+dnf5 install brave-browser
 
 ## Throne (VPN-клиент) + SUID для TUN
 
