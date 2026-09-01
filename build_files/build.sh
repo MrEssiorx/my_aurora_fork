@@ -28,10 +28,19 @@ dnf5 install -y brave-browser
 
 ## Throne (VPN-клиент) + SUID для TUN
 
+echo "Downloading Throne VPN..."
 curl -fsSL -o /etc/yum.repos.d/throne.repo https://parhelia512.github.io/throne.repo
 dnf5 install -y throne
 chown root:root /usr/lib64/Throne/ThroneCore
 chmod u+s /usr/lib64/Throne/ThroneCore
+
+## Happ (VPN-клиент)
+
+HAPP_URL="https://github.com/Happ-proxy/happ-desktop/releases/latest/download/Happ.linux.x64.rpm"
+echo "Downloading Happ VPN..."
+curl -fsSL -L -o /tmp/happ.rpm "$HAPP_URL"
+dnf5 install -y /tmp/happ.rpm
+rm -f /tmp/happ.rpm
 
 #### Example for enabling a System Unit File
 
